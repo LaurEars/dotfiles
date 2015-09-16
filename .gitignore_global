@@ -1,2 +1,6 @@
 # for pycharm files
 .idea/
+
+# for redis
+dump.rdb
+
