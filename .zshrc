@@ -2,6 +2,9 @@
 export PATH=./node_modules/.bin:$PATH
 export PGDATA=/usr/local/var/postgres
 
+export GOPATH=$HOME/gowork
+export PATH=$PATH:$GOPATH/bin
+
 # VirtualEnv Stuff
 VENVBURRITO="$HOME/.venvburrito"
 VENVBURRITO_esc="$HOME/.venvburrito"
