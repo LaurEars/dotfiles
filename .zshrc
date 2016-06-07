@@ -25,6 +25,8 @@ alias 'cgnose'='nosetests --with-coverage --cover-html --cover-package=codegraph
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+# For docker
+alias 'docker-env'='eval "$(docker-machine env default)"; docker-machine env default'
 
 # Customizing the shell
 setopt PROMPT_SUBST
