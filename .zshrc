@@ -27,6 +27,8 @@ alias 'cgnose'='nosetests --with-coverage --cover-html --cover-package=codegraph
 export PATH="/usr/local/heroku/bin:$PATH"
 # For docker
 alias 'docker-env'='eval "$(docker-machine env default)"; docker-machine env default'
+# For fun
+alias 'chmod-yolo'='chmod 777'
 
 # Customizing the shell
 setopt PROMPT_SUBST
