@@ -1,8 +1,9 @@
 # for pycharm files
 .idea/
 
-# pyenv
+# python specific
 .python-version
+.envrc
 
 # for redis
 dump.rdb
