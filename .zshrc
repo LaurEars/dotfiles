@@ -16,8 +16,6 @@ if [ -f $VENVBURRITO_esc/startup.sh ]; then
 fi
 
 # Aliases
-alias 'cgnose'='nosetests --with-coverage --cover-html --cover-package=codegrapher,cli'
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 # For docker
