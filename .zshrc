@@ -23,6 +23,9 @@ alias 'docker-env'='eval "$(docker-machine env default)"; docker-machine env def
 # For fun
 alias 'chmod-yolo'='chmod 777'
 
+# git autocompletion
+autoload -Uz compinit && compinit
+
 # Customizing the shell
 setopt PROMPT_SUBST
 autoload -U colors && colors
