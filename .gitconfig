@@ -1,0 +1,5 @@
+[core]
+	excludesfile = ~/.gitignore_global
+[user]
+	email = LaurEars@users.noreply.github.com
+	name = Laura Rupprecht
