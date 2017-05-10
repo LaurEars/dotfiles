@@ -58,5 +58,16 @@ fi
 echo -n $git_prompt_info
 }
 
-PROMPT='%{$(basename $(pwd))%} $fg_bold[blue] [$(__git_prompt_info)$fg_bold[blue]]$reset_color
+function __pyenv_prompt_info {
+if [ ! -z $PYENV_VERSION ]
+then
+  pyenv_prompt_prefix="($PYENV_VERSION) "
+else
+  pyenv_prompt_prefix=""
+fi
+echo -n $pyenv_prompt_prefix
+}
+
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+PROMPT='$(__pyenv_prompt_info)%{$(basename $(pwd))%} $fg_bold[blue] [$(__git_prompt_info)$fg_bold[blue]]$reset_color
 $ %}'
