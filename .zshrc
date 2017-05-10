@@ -5,6 +5,12 @@ export PGDATA=/usr/local/var/postgres
 export GOPATH=$HOME/gowork
 export PATH=$PATH:$GOPATH/bin
 
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # VirtualEnv Stuff
 VENVBURRITO="$HOME/.venvburrito"
 VENVBURRITO_esc="$HOME/.venvburrito"
