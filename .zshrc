@@ -28,6 +28,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 alias 'docker-env'='eval "$(docker-machine env default)"; docker-machine env default'
 # For fun
 alias 'chmod-yolo'='chmod 777'
+# For python
+alias 'pycache-clean'='find . | grep -E "(__pycache__|\.pyc$)" | xargs rm -rf'
 
 # git autocompletion
 autoload -Uz compinit && compinit
