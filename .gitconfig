@@ -3,3 +3,7 @@
 [user]
 	email = LaurEars@users.noreply.github.com
 	name = Laura Rupprecht
+[merge]
+	tool = opendiff
+[format]
+	pretty = oneline
