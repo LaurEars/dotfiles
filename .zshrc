@@ -1,4 +1,5 @@
 
+export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=./node_modules/.bin:$PATH
 export PGDATA=/usr/local/var/postgres
 
@@ -7,19 +8,11 @@ export PATH=$PATH:$GOPATH/bin
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+# Require virtualenv when doing pip install
+export PIP_REQUIRE_VIRTUALENV=true
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# VirtualEnv Stuff
-VENVBURRITO="$HOME/.venvburrito"
-VENVBURRITO_esc="$HOME/.venvburrito"
-WORKON_HOME="~/.virtualenvs"
-
-# startup virtualenv-burrito
-if [ -f $VENVBURRITO_esc/startup.sh ]; then
-    . $VENVBURRITO_esc/startup.sh
-fi
 
 # Aliases
 ### Added by the Heroku Toolbelt
@@ -30,6 +23,10 @@ alias 'docker-env'='eval "$(docker-machine env default)"; docker-machine env def
 alias 'chmod-yolo'='chmod 777'
 # For python
 alias 'pycache-clean'='find . | grep -E "(__pycache__|\.pyc$)" | xargs rm -rf'
+alias 'pep8'='autopep8 --in-place --max-line-length 120'
+# For jira tickets
+alias 'task-template'='cat ~/code/template-abbrev.txt | pbcopy'
+export PYTHONBREAKPOINT=ipdb.set_trace
 
 # git autocompletion
 autoload -Uz compinit && compinit
