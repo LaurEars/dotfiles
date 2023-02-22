@@ -3,6 +3,8 @@
 # Local system configuration steps
 [ ] Install homebrew
 [ ] Install iterm2
+[ ] Create ssh key
+[ ] Download and link dotfiles e.g. `ln -s ~/code/dotfiles/.zshrc ~/.zshrc`
 
 # create file for local configuration
 touch ~/.local_secrets.sh
