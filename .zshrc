@@ -15,8 +15,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Aliases
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 # For docker
 alias 'docker-env'='eval "$(docker-machine env default)"; docker-machine env default'
 # For fun
