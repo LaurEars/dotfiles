@@ -7,3 +7,5 @@
 	tool = opendiff
 [format]
 	pretty = oneline
+[init]
+	defaultBranch = main
