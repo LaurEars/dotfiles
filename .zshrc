@@ -26,11 +26,14 @@ alias 'pep8'='autopep8 --in-place --max-line-length 120'
 alias 'task-template'='cat ~/code/template-abbrev.txt | pbcopy'
 export PYTHONBREAKPOINT=ipdb.set_trace
 
-# Takes contents of clipboard, base64 encodes it, and pipes the encoded contents to clipboard
-alias b64e="pbpaste | base64 | pbcopy"
+# set base64 encode/decode functions for Mac OS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # Takes contents of clipboard, base64 encodes it, and pipes the encoded contents to clipboard
+  alias b64e="pbpaste | base64 | pbcopy"
 
-# Takes contents of clipboard, base64 decodes it, and pipes the decoded contents to clipboard
-alias b64d="pbpaste | base64 --decode | pbcopy"
+  # Takes contents of clipboard, base64 decodes it, and pipes the decoded contents to clipboard
+  alias b64d="pbpaste | base64 --decode | pbcopy"
+fi
 
 # git autocompletion
 autoload -Uz compinit && compinit
