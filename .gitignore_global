@@ -8,3 +8,5 @@
 # for redis
 dump.rdb
 
+# for mac
+.DS_Store
