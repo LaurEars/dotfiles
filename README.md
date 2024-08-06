@@ -6,3 +6,4 @@ Personal settings files
 - [ ] [Add new ssh key to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 - [ ] Install xcode
 - [ ] Run `./setup.sh` from current directory
+- [ ] Install [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/)
