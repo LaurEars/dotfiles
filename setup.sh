@@ -2,8 +2,9 @@
 
 set -e
 
-# Install xcode
-xcode xcode-select --install
+# Install xcode to install git
+# xcode xcode-select --install
+
 # Install homebrew
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 # Install iterm2 with homebrew
