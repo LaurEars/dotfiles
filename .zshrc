@@ -22,8 +22,6 @@ alias 'chmod-yolo'='chmod 777'
 # For python
 alias 'pycache-clean'='find . | grep -E "(__pycache__|\.pyc$)" | xargs rm -rf'
 alias 'pep8'='autopep8 --in-place --max-line-length 120'
-# For jira tickets
-alias 'task-template'='cat ~/code/template-abbrev.txt | pbcopy'
 export PYTHONBREAKPOINT=ipdb.set_trace
 # frequently used git commands
 alias 'git-fixup'='git commit --amend --no-edit'
