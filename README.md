@@ -8,3 +8,8 @@ Personal settings files
 - [ ] Clone `dotfiles` repo: `git clone git@github.com:LaurEars/dotfiles.git`
 - [ ] Run `./setup.sh` from current directory
 - [ ] Install [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/)
+
+### Other helpful configuration settings
+Quad-click select in iTerm2: Under Settings > Profiles > Advanced > SmartSelection
+- [ ] `file_path:line_number` regex: `[\w/]+\.\w+:\d+`
+- [ ] To match a file path in a git diff output, set this to higher precision so it matches preferentially to standard path regex without `a/` or `b/` prefixes: `(?<=[ab]\/)([\w/]+\.\w+)`
