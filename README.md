@@ -13,3 +13,9 @@ Personal settings files
 Quad-click select in iTerm2: Under Settings > Profiles > Advanced > SmartSelection
 - [ ] `file_path:line_number` regex: `[\w/]+\.\w+:\d+`
 - [ ] To match a file path in a git diff output, set this to higher precision so it matches preferentially to standard path regex without `a/` or `b/` prefixes: `(?<=[ab]\/)([\w/]+\.\w+)`
+
+### Mac keyboard setup
+To configure a standard keyboard with the function key order matching the macOS defaults:
+
+Go to Settings > Keyboard > Keyboard Shortcuts > Modifier Keys and select the keyboard to remap
+![keyboard modifier remapping](images/macos_keyboard_modifier_keys.png)
