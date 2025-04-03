@@ -19,6 +19,7 @@ export NVM_DIR="$HOME/.nvm"
 alias 'docker-env'='eval "$(docker-machine env default)"; docker-machine env default'
 # For fun
 alias 'chmod-yolo'='chmod 777'
+alias 'git-lfg'='git push origin main --force'
 # For python
 alias 'pycache-clean'='find . | grep -E "(__pycache__|\.pyc$)" | xargs rm -rf'
 alias 'pep8'='autopep8 --in-place --max-line-length 120'
