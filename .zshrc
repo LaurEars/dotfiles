@@ -94,6 +94,7 @@ PROMPT='$(__pyenv_prompt_info)%{$(basename $(pwd))%} $fg_bold[blue] [$(__git_pro
 $ %}'
 
 source ~/.local_secrets.sh
+# Enable iTerm2 shell integration
 source ~/.iterm2_shell_integration.zsh
 
 # To set iterm badge to \(user.gitRepo) to get git repo name as badge
@@ -101,3 +102,4 @@ iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
   iterm2_set_user_var gitRepo $((git config --local remote.origin.url 2> /dev/null | sed -n 's#.*/\([^.]*\)\.git#\1#p' 2> /dev/null))
 }
+
