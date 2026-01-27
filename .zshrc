@@ -14,6 +14,12 @@ export PGDATA=/usr/local/var/postgres
 export GOPATH=$HOME/gowork
 export PATH=$PATH:$GOPATH/bin
 
+# On Apple Silicon Macs (M1, M2, etc), Homebrew installs to /opt/homebrew instead of /usr/local
+# This adds brew commands to PATH
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 # Require virtualenv when doing pip install
