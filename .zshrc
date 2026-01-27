@@ -1,3 +1,11 @@
+# History settings
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=./node_modules/.bin:$PATH
