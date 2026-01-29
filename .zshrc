@@ -7,7 +7,12 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
-export PGDATA=/usr/local/var/postgres
+# PostgreSQL data directory (checks both Intel and ARM Mac locations)
+if [[ -d /opt/homebrew/var/postgres ]]; then
+  export PGDATA=/opt/homebrew/var/postgres
+elif [[ -d /usr/local/var/postgres ]]; then
+  export PGDATA=/usr/local/var/postgres
+fi
 
 # On Apple Silicon Macs (M1, M2, etc), Homebrew installs to /opt/homebrew instead of /usr/local
 # This adds brew commands to PATH
@@ -15,18 +20,20 @@ if [[ -x /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Python configuration
 # Require virtualenv when doing pip install
 export PIP_REQUIRE_VIRTUALENV=true
+# Use ipdb for breakpoints (requires ipdb)
+export PYTHONBREAKPOINT=ipdb.set_trace
 
 # Aliases
 # For fun
 alias 'chmod-yolo'='chmod 777'
 alias 'git-lfg'='git push origin main --force-with-lease'
 # For python
-alias 'pycache-clean'='find . | grep -E "(__pycache__|\.pyc$)" | xargs rm -rf'
+alias 'pycache-clean'='find . -type f -name "*.pyc" -delete && find . -type d -name "__pycache__" -delete'
 alias 'pep8'='autopep8 --in-place --max-line-length 120'
-export PYTHONBREAKPOINT=ipdb.set_trace
-# frequently used git commands
+# Frequently used git commands
 alias 'git-fixup'='git commit --amend --no-edit'
 
 # set base64 encode/decode functions for Mac OS
