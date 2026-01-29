@@ -7,12 +7,7 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH=./node_modules/.bin:$PATH
 export PGDATA=/usr/local/var/postgres
-
-export GOPATH=$HOME/gowork
-export PATH=$PATH:$GOPATH/bin
 
 # On Apple Silicon Macs (M1, M2, etc), Homebrew installs to /opt/homebrew instead of /usr/local
 # This adds brew commands to PATH
@@ -20,20 +15,13 @@ if [[ -x /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 # Require virtualenv when doing pip install
 export PIP_REQUIRE_VIRTUALENV=true
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # Aliases
-# For docker
-alias 'docker-env'='eval "$(docker-machine env default)"; docker-machine env default'
 # For fun
 alias 'chmod-yolo'='chmod 777'
-alias 'git-lfg'='git push origin main --force'
+alias 'git-lfg'='git push origin main --force-with-lease'
 # For python
 alias 'pycache-clean'='find . | grep -E "(__pycache__|\.pyc$)" | xargs rm -rf'
 alias 'pep8'='autopep8 --in-place --max-line-length 120'
@@ -60,42 +48,34 @@ autoload -U colors && colors
 GIT_PROMPT_CLEAN="✔"
 GIT_PROMPT_DIRTY="✗"
 function __git_prompt_info {
-if [`git ls-files -u >& /dev/null` -eq '']
-then
- REPO_NAME=$(basename $(git rev-parse --show-toplevel 2> /dev/null) 2> /dev/null)
- BRANCH_NAME=$(git name-rev --name-only --no-undefined --always HEAD 2> /dev/null)
- if [[ -n $BRANCH_NAME ]]; then
-  echo -n $BRANCH_NAME
-  echo -n " "
- fi
- if command git diff-index --quiet HEAD 2> /dev/null; then
-  git_prompt_info=$fg_bold[green]$GIT_PROMPT_CLEAN
- elif [[ -n $REPO_NAME ]]; then
-  git_prompt_info=$fg_bold[red]$GIT_PROMPT_DIRTY
- else
-  git_prompt_info="~"
- fi
-fi
-echo -n $git_prompt_info
+  REPO_NAME=$(basename $(git rev-parse --show-toplevel 2> /dev/null) 2> /dev/null)
+  BRANCH_NAME=$(git name-rev --name-only --no-undefined --always HEAD 2> /dev/null)
+  if [[ -n $BRANCH_NAME ]]; then
+    echo -n $BRANCH_NAME
+    echo -n " "
+  fi
+  if command git diff-index --quiet HEAD 2> /dev/null; then
+    git_prompt_info=$fg_bold[green]$GIT_PROMPT_CLEAN
+  elif [[ -n $REPO_NAME ]]; then
+    git_prompt_info=$fg_bold[red]$GIT_PROMPT_DIRTY
+  else
+    git_prompt_info="~"
+  fi
+  echo -n $git_prompt_info
 }
 
-function __pyenv_prompt_info {
-if [ ! -z $PYENV_VERSION ]
-then
-  pyenv_prompt_prefix="($PYENV_VERSION) "
-else
-  pyenv_prompt_prefix=""
-fi
-echo -n $pyenv_prompt_prefix
-}
-
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-PROMPT='$(__pyenv_prompt_info)%{$(basename $(pwd))%} $fg_bold[blue] [$(__git_prompt_info)$fg_bold[blue]]$reset_color
+PROMPT='%{$(basename $(pwd))%} $fg_bold[blue] [$(__git_prompt_info)$fg_bold[blue]]$reset_color
 $ %}'
 
-source ~/.local_secrets.sh
-# Enable iTerm2 shell integration
-source ~/.iterm2_shell_integration.zsh
+# Load local secrets if file exists
+if [[ -f ~/.local_secrets.sh ]]; then
+  source ~/.local_secrets.sh
+fi
+
+# Enable iTerm2 shell integration if installed
+if [[ -f ~/.iterm2_shell_integration.zsh ]]; then
+  source ~/.iterm2_shell_integration.zsh
+fi
 
 # To set iterm badge to \(user.gitRepo) to get git repo name as badge
 iterm2_print_user_vars() {
