@@ -11,13 +11,10 @@ else
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 fi
 
-# Install iterm2 with homebrew
-if brew list --cask iterm2 >/dev/null 2>&1; then
-    echo "iTerm2 already installed (skipping)"
-else
-    echo "Installing iTerm2..."
-    brew install --cask iterm2
-fi
+# Install applications with homebrew
+echo "Installing applications..."
+brew install --cask iterm2
+brew install --cask jetbrains-toolbox
 
 # create file for local configuration
 if [[ -f ~/.local_secrets.sh ]]; then

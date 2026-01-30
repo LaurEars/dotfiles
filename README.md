@@ -7,7 +7,6 @@ Personal settings files
 - [ ] Install xcode: `xcode xcode-select --install`
 - [ ] Clone `dotfiles` repo: `git clone git@github.com:LaurEars/dotfiles.git`
 - [ ] Run `./setup.sh` from current directory
-- [ ] Install [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/)
 
 ### Other helpful configuration settings
 Quad-click select in iTerm2: Under Settings > Profiles > Advanced > SmartSelection
