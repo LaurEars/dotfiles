@@ -29,9 +29,7 @@ else
     -o ~/.iterm2_shell_integration.zsh
 fi
 
-# Link dotfiles e.g. `ln -s ~/code/dotfiles/.zshrc ~/.zshrc` (see below)
-# create symlinks for all dotfiles in the directory
-# Need to do this for all files except for .git and .idea
+# Create symlinks for all dotfiles except .git and .idea
 dotfiles_dir=~/code/dotfiles
 for file in "$dotfiles_dir"/.[a-zA-Z]*; do
     filename=$(basename "$file")
