@@ -17,13 +17,8 @@ brew install --cask iterm2
 brew install --cask jetbrains-toolbox
 
 # create file for local configuration
-if [[ -f ~/.local_secrets.sh ]]; then
-    echo "~/.local_secrets.sh already exists (skipping)"
-else
-    echo "Creating ~/.local_secrets.sh"
-    touch ~/.local_secrets.sh
-    chmod 755 ~/.local_secrets.sh
-fi
+touch ~/.local_secrets.sh
+chmod 755 ~/.local_secrets.sh
 
 # to set up shell integration in iterm, this file is necessary
 if [[ -f ~/.iterm2_shell_integration.zsh ]]; then
