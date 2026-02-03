@@ -12,9 +12,10 @@ else
 fi
 
 # Install applications with homebrew
-echo "Installing applications..."
+echo "Installing homebrew applications..."
 brew install --cask iterm2
 brew install --cask jetbrains-toolbox
+brew install jq uv
 
 # create file for local configuration
 touch ~/.local_secrets.sh
