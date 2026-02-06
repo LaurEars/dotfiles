@@ -8,10 +8,9 @@ Personal settings files
 - [ ] Clone `dotfiles` repo: `git clone git@github.com:LaurEars/dotfiles.git`
 - [ ] Run `./setup.sh` from current directory
 
-### Other helpful configuration settings
-Quad-click select in iTerm2: Under Settings > Profiles > Advanced > SmartSelection
-- [ ] `file_path:line_number` regex: `[\w/]+\.\w+:\d+`
-- [ ] To match a file path in a git diff output, set this to higher precision so it matches preferentially to standard path regex without `a/` or `b/` prefixes: `(?<=[ab]\/)([\w/]+\.\w+)`
+### iTerm2 setup
+The setup script installs a Dynamic Profile with badge text, SmartSelection patterns, and disables [clicking to select commands](https://superuser.com/questions/1848258/how-to-disable-selection-highlighting-on-iterm2).
+- [ ] In iTerm2 > Settings > Profiles, set "Dotfiles" as the default profile
 
 ### Mac keyboard setup
 To configure a standard keyboard with the function key order matching the macOS defaults:

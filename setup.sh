@@ -30,6 +30,10 @@ else
     -o ~/.iterm2_shell_integration.zsh
 fi
 
+# Set up iTerm2 Dynamic Profile
+mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles
+cp "$dotfiles_dir/iterm2-profile.json" ~/Library/Application\ Support/iTerm2/DynamicProfiles/
+
 # Create symlinks for all dotfiles except .git and .idea
 dotfiles_dir=~/code/dotfiles
 for file in "$dotfiles_dir"/.[a-zA-Z]*; do
