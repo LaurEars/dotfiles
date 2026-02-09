@@ -1,14 +1,24 @@
-#!/bin/sh
+#!/bin/bash
+
+dotfiles_dir="$(cd "$(dirname "$0")" && pwd)"
 
 # Install xcode to install git
-# xcode xcode-select --install
+# xcode-select --install
 
 # Install homebrew
 if command -v brew >/dev/null 2>&1; then
     echo "Homebrew already installed (skipping)"
 else
     echo "Installing Homebrew..."
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Homebrew installs to /opt/homebrew on ARM Macs, /usr/local on Intel Macs.
+# Eval shellenv so brew is available for the rest of this script.
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 # Install applications with homebrew
@@ -35,7 +45,6 @@ mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles
 cp "$dotfiles_dir/iterm2-profile.json" ~/Library/Application\ Support/iTerm2/DynamicProfiles/
 
 # Create symlinks for all dotfiles except .git and .idea
-dotfiles_dir=~/code/dotfiles
 for file in "$dotfiles_dir"/.[a-zA-Z]*; do
     filename=$(basename "$file")
     target="$HOME/$filename"

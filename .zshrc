@@ -20,6 +20,9 @@ if [[ -x /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Add ~/.local/bin to PATH for locally installed tools
+export PATH="$HOME/.local/bin:$PATH"
+
 # Python configuration
 # Require virtualenv when doing pip install
 export PIP_REQUIRE_VIRTUALENV=true
