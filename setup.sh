@@ -44,6 +44,9 @@ fi
 mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles
 cp "$dotfiles_dir/iterm2-profile.json" ~/Library/Application\ Support/iTerm2/DynamicProfiles/
 
+# iTerm2 preferences
+defaults write com.googlecode.iterm2 ClickToSelectCommand -bool false
+
 # macOS preferences
 echo "Setting macOS preferences..."
 defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"

@@ -3,7 +3,6 @@
     "Name": "Dotfiles",
     "Guid": "dotfiles-default-profile",
     "Badge Text": "\\(user.gitRepo)",
-    "ClickToSelectCommand": false,
     "Smart Selection Rules": [
       {
         "notes": "file_path:line_no",
