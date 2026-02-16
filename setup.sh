@@ -44,6 +44,13 @@ fi
 mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles
 cp "$dotfiles_dir/iterm2-profile.json" ~/Library/Application\ Support/iTerm2/DynamicProfiles/
 
+# macOS preferences
+echo "Setting macOS preferences..."
+defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
+defaults write NSGlobalDomain AppleFirstWeekday -dict-add gregorian -int 2
+defaults write NSGlobalDomain AppleICUDateFormatStrings -dict-add 1 -string "y-MM-dd"
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
 # Create symlinks for all dotfiles except .git and .idea
 for file in "$dotfiles_dir"/.[a-zA-Z]*; do
     filename=$(basename "$file")
