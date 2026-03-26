@@ -23,6 +23,11 @@ fi
 # Add ~/.local/bin to PATH for locally installed tools
 export PATH="$HOME/.local/bin:$PATH"
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 # Python configuration
 # Require virtualenv when doing pip install
 export PIP_REQUIRE_VIRTUALENV=true
@@ -92,4 +97,3 @@ iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
   iterm2_set_user_var gitRepo $((git config --local remote.origin.url 2> /dev/null | sed -n 's#.*/\([^.]*\)\.git#\1#p' 2> /dev/null))
 }
-

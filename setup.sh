@@ -27,6 +27,26 @@ brew install --cask iterm2
 brew install --cask jetbrains-toolbox
 brew install jq uv
 
+# Install nvm and Node LTS
+NVM_VERSION="v0.40.4"
+export NVM_DIR="$HOME/.nvm"
+if [[ ! -s "$NVM_DIR/nvm.sh" ]]; then
+    echo "Installing nvm..."
+    curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh" | bash
+else
+    echo "nvm already installed (skipping)"
+fi
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+if ! command -v node >/dev/null 2>&1; then
+    echo "Installing Node LTS..."
+    nvm install --lts
+    # Set a default Node version for new shells so `node` is always available.
+    # This defines a fallback; project-specific versions via `.nvmrc` + `nvm use` take precedence.
+    nvm alias default 'lts/*'
+else
+    echo "Node already installed: $(node -v)"
+fi
+
 # create file for local configuration
 touch ~/.local_secrets.sh
 chmod 755 ~/.local_secrets.sh
