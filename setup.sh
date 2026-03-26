@@ -49,14 +49,14 @@ fi
 
 # create file for local configuration
 touch ~/.local_secrets.sh
-chmod 755 ~/.local_secrets.sh
+chmod 600 ~/.local_secrets.sh
 
 # to set up shell integration in iterm, this file is necessary
 if [[ -f ~/.iterm2_shell_integration.zsh ]]; then
     echo "iTerm2 shell integration already exists (skipping)"
 else
     echo "Downloading iTerm2 shell integration..."
-    curl -L https://iterm2.com/shell_integration/zsh \
+    curl -fsSL https://iterm2.com/shell_integration/zsh \
     -o ~/.iterm2_shell_integration.zsh
 fi
 
@@ -74,19 +74,16 @@ defaults write NSGlobalDomain AppleFirstWeekday -dict-add gregorian -int 2
 defaults write NSGlobalDomain AppleICUDateFormatStrings -dict-add 1 -string "y-MM-dd"
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
-# Create symlinks for all dotfiles except .git and .idea
-for file in "$dotfiles_dir"/.[a-zA-Z]*; do
-    filename=$(basename "$file")
+# Symlink only dotfiles tracked by git
+for filename in $(git -C "$dotfiles_dir" ls-files | grep '^\.' ); do
     target="$HOME/$filename"
 
-    if [[ "$filename" != ".git" && "$filename" != ".idea" ]]; then
-        if [[ -L "$target" ]]; then
-            echo "Symlink already exists: $target (skipping)"
-        elif [[ -e "$target" ]]; then
-            echo "File already exists: $target (skipping, back up manually if needed)"
-        else
-            echo "Linking $dotfiles_dir/$filename to $target"
-            ln -s "$dotfiles_dir/$filename" "$target"
-        fi
+    if [[ -L "$target" ]]; then
+        echo "Symlink already exists: $target (skipping)"
+    elif [[ -e "$target" ]]; then
+        echo "File already exists: $target (skipping, back up manually if needed)"
+    else
+        echo "Linking $dotfiles_dir/$filename to $target"
+        ln -s "$dotfiles_dir/$filename" "$target"
     fi
 done
