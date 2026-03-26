@@ -7,6 +7,7 @@ Personal settings files
 - [ ] Install xcode: `xcode-select --install`
 - [ ] Clone `dotfiles` repo: `git clone git@github.com:LaurEars/dotfiles.git`
 - [ ] Run `./setup.sh` from current directory
+- [ ] [Install Ghostty](https://ghostty.org/docs/install/binary#macos)
 
 ### iTerm2 setup
 The setup script installs a Dynamic Profile with badge text, SmartSelection patterns, and disables [clicking to select commands](https://superuser.com/questions/1848258/how-to-disable-selection-highlighting-on-iterm2).
